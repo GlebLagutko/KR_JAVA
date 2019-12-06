@@ -1,12 +1,12 @@
 package KR;
 
 public enum TreeType {
-    CONIFEROUS,DECIDUOUS;
+    CONIFEROUS, DECIDUOUS;
 
     @Override
-    public String toString(){
-        switch (this){
-            case  CONIFEROUS:
+    public String toString() {
+        switch (this) {
+            case CONIFEROUS:
                 return "CONIFEROUS";
             case DECIDUOUS:
                 return "DECIDUOUS";
@@ -15,19 +15,19 @@ public enum TreeType {
         }
     }
 
-    public static TreeType toType(String s) throws EnumIncorrectException{
-        TreeType delta;
-        switch (s){
+    public static TreeType toType(String s) throws EnumIncorrectException {
+        TreeType temp;
+        switch (s) {
             case "CONIFEROUS":
-                delta = CONIFEROUS;
+                temp = CONIFEROUS;
                 break;
             case "DECIDUOUS":
-                delta = DECIDUOUS;
+                temp = DECIDUOUS;
                 break;
             default:
                 throw new EnumIncorrectException();
         }
-        return delta;
+        return temp;
     }
 
 

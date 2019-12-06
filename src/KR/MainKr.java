@@ -6,30 +6,39 @@ import java.util.Scanner;
 
 public class MainKr {
     public static void main(String[] args) {
-        MyContainer1<ForestTree> listForest = new MyContainer1<>();
-        MyContainer1<FruitTree> listFruite = new MyContainer1<>();
-        try (Scanner sc = new Scanner(new File("src\\FruiteTrees"))) {
+        MyContainer<ForestTree> listForest = fillForestContainer();
+        MyContainer<FruitTree> listFruit = fillFruitContainer();
+        listFruit.demo(new FruitTree("Apple", TreeType.CONIFEROUS, 230, 12), TreeType.CONIFEROUS);
+        listForest.demo(new ForestTree("Oak", TreeType.DECIDUOUS, 34, 545), TreeType.CONIFEROUS);
+    }
+
+    private static MyContainer<ForestTree> fillForestContainer() {
+        MyContainer<ForestTree> listForest = new MyContainer<>();
+        try (Scanner sc = new Scanner(new File("src\\KR\\ForestTrees"))) {
             while (sc.hasNext()) {
-                FruitTree tr = new FruitTree(sc.next(), TreeType.toType(sc.next()), sc.nextInt(), sc.nextInt(), sc.nextInt());
-                listFruite.add(tr);
+                ForestTree tr = new ForestTree(sc.next(), TreeType.toType(sc.next()), sc.nextInt(), sc.nextInt());
+                listForest.add(tr);
             }
         } catch (FileNotFoundException ex) {
 
-        } catch (EnumIncorrectException ex){
+        } catch (EnumIncorrectException ex) {
             System.out.println(ex.getMessage());
         }
+        return listForest;
+    }
 
-        listFruite.print();
-        System.out.println(listFruite.count(new FruitTree("name1",TreeType.CONIFEROUS,23,34,2)));
-        if( listFruite.search(new FruitTree("name1",TreeType.CONIFEROUS,23,34,2))!= null){
-            System.out.println("Found");
-        }else{
-            System.out.println("Not found");
-        }
-        try{
-            System.out.println(listFruite.min());
-        }catch (EmptyContainerException ex){
+    private static MyContainer<FruitTree> fillFruitContainer() {
+        MyContainer<FruitTree> listFruit = new MyContainer<>();
+        try (Scanner sc = new Scanner(new File("src\\KR\\FruiteTrees"))) {
+            while (sc.hasNext()) {
+                FruitTree tr = new FruitTree(sc.next(), TreeType.toType(sc.next()), sc.nextInt(), sc.nextInt());
+                listFruit.add(tr);
+            }
+        } catch (FileNotFoundException ex) {
+
+        } catch (EnumIncorrectException ex) {
             System.out.println(ex.getMessage());
         }
+        return listFruit;
     }
 }

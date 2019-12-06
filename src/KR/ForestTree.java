@@ -1,18 +1,19 @@
 package KR;
 
 public class ForestTree extends Tree {
-    private int count;
-    public ForestTree(String name, TreeType treeType, int old, int count) {
-        super(name, treeType, old);
-        this.count = count;
+    private int countWood;
+
+    public ForestTree(String name, TreeType treeType, int count, int countWood) {
+        super(name, count, treeType);
+        this.countWood = countWood;
     }
 
-    public int getCount() {
-        return count;
+    public int getCountWood() {
+        return countWood;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setCountWood(int countWood) {
+        this.countWood = countWood;
     }
 
     @Override
@@ -22,12 +23,12 @@ public class ForestTree extends Tree {
 
     @Override
     public String toString() {
-        return super.toString() + ' ' + count;
+        return super.toString() + " Wood count :" + countWood;
     }
 
     @Override
     public boolean equals(Object o) {
         ForestTree temp = (ForestTree) o;
-        return super.equals(o) && count == temp.count;
+        return super.equals(o) && countWood == temp.countWood;
     }
 }

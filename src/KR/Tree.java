@@ -2,14 +2,14 @@ package KR;
 
 public abstract class Tree implements Comparable<Tree> {
     private String name;
+    private int count;
     private TreeType treeType;
-    private int years;
 
 
-    public Tree(String name, TreeType treeType, int old) {
+    public Tree(String name, int count, TreeType treeType) {
         this.name = name;
+        this.count = count;
         this.treeType = treeType;
-        this.years = old;
     }
 
     public String getName() {
@@ -20,6 +20,14 @@ public abstract class Tree implements Comparable<Tree> {
         this.name = name;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     public TreeType getTreeType() {
         return treeType;
     }
@@ -28,35 +36,22 @@ public abstract class Tree implements Comparable<Tree> {
         this.treeType = treeType;
     }
 
-    public int getYears() {
-        return years;
-    }
-
-    public void setYears(int years) {
-        this.years = years;
-    }
-
     abstract void print();
 
     @Override
     public String toString() {
-        return "Name : "+ name + " Type: " + treeType + " Years:" + years;
+        return "Name : " + name + " Type: " + treeType + " Count: " + count;
     }
 
     @Override
     public int compareTo(Tree o) {
-        if (!name.equals(o.name))
-            return name.compareTo(o.name);
-        if (years - o.years != 0)
-            return -(years - o.years);
-        return
-                treeType.compareTo(o.treeType);
+        return count - o.count == 0 ? -name.compareTo(o.name) : count - o.count;
     }
 
     @Override
     public boolean equals(Object o) {
         Tree temp = (Tree) o;
-        return this.name.equals(temp.name) && this.years == temp.years && this.treeType.equals(temp.treeType);
+        return name.equals(temp.name) && treeType.equals(temp.treeType);
     }
 
 }

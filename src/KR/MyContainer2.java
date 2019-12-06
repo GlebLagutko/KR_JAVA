@@ -3,7 +3,7 @@ package KR;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MyContainer2<T extends Comparable<T>> extends ArrayList<T> {
+public class MyContainer2<T extends Tree> extends ArrayList<T> {
     public MyContainer2() {
         super();
     }

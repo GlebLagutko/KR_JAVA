@@ -2,34 +2,25 @@ package KR;
 
 public class FruitTree extends Tree {
 
-    private int weight;
-    private int average;
+    private int harvestWeight;
 
-    public int getWeight() {
-        return weight;
+    public int getHarvestWeight() {
+        return harvestWeight;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public void setHarvestWeight(int harvestWeight) {
+        this.harvestWeight = harvestWeight;
     }
 
-    public int getAverage() {
-        return average;
-    }
 
-    public void setAverage(int average) {
-        this.average = average;
-    }
-
-    public FruitTree(String name, TreeType treeType, int old, int weight, int average) {
-        super(name, treeType, old);
-        this.weight = weight;
-        this.average = average;
+    public FruitTree(String name, TreeType treeType, int count, int weight) {
+        super(name, count, treeType);
+        this.harvestWeight = weight;
     }
 
     @Override
     public String toString() {
-        return super.toString() + " Weight: " + weight + " Average: " + average;
+        return super.toString() + " HarvestWeight: " + harvestWeight;
     }
 
     @Override
@@ -40,6 +31,6 @@ public class FruitTree extends Tree {
     @Override
     public boolean equals(Object o) {
         FruitTree temp = (FruitTree) o;
-        return super.equals(o) && average == temp.average && weight == temp.weight;
+        return super.equals(o) && harvestWeight == temp.harvestWeight;
     }
 }
